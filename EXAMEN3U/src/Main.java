@@ -13,7 +13,8 @@ public class Main {
             System.out.println("4. Realizar un Deposito ");
             System.out.println("5. Salir");
             System.out.println("Ingrese el numero de la opcion a la que desea ingresar");
-             opcion = t.nextInt();
+            opcion = t.nextInt();
+            t.nextLine();
             switch (opcion) {
                 case 1:
                     Sistema.cuentaAhorro();

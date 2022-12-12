@@ -5,8 +5,8 @@ public class Cuenta {
         return nombreCliente;
     }
 
-    public void setNumero_de_Cuenta(String numero_de_Cuenta) {
-        this.numero_de_Cuenta = numero_de_Cuenta;
+    public String getNumero_de_Cuenta() {
+        return numero_de_Cuenta;
     }
 
     private String numero_de_Cuenta;

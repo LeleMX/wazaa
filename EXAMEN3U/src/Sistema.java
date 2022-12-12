@@ -1,8 +1,8 @@
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Sistema {
-    static Cuenta cuentas[] = new Cuenta[100];
+    static Ahorro cuentaAhorro[] = new Ahorro[100];
+    static Inversion cuentaInversion[] = new Inversion[100];
     static Scanner t = new Scanner(System.in);
 
     public static void cuentaAhorro() {
@@ -12,10 +12,11 @@ public class Sistema {
         String numero_de_Cuenta = t.next();
         System.out.println("Monto inicial para la cuenta");
         double monto = t.nextDouble();
-        Cuenta c = new Cuenta(nombre, numero_de_Cuenta, monto);
-        for (int i = 0; i < cuentas.length; i++) {
-            if (cuentas[i] == null) {
-                cuentas[i] = c;
+        t.nextLine();
+        Ahorro c = new Ahorro(nombre, numero_de_Cuenta, monto);
+        for (int i = 0; i < cuentaAhorro.length; i++) {
+            if (cuentaAhorro[i] == null) {
+                cuentaAhorro[i] = c;
                 System.out.println("Cuenta de ahorro dada de alta".toUpperCase());
                 break;
             }
@@ -28,10 +29,11 @@ public class Sistema {
         String numero_de_Cuenta = t.next();
         System.out.println("Monto inicial para la cuenta");
         double monto = t.nextDouble();
-        Cuenta c = new Cuenta(nombre, numero_de_Cuenta, monto);
-        for (int i = 0; i < cuentas.length; i++) {
-            if (cuentas[i] == null) {
-                cuentas[i] = c;
+        t.nextLine();
+        Inversion c = new Inversion(nombre, numero_de_Cuenta, monto);
+        for (int i = 0; i < cuentaInversion.length; i++) {
+            if (cuentaInversion[i] == null) {
+                cuentaInversion[i] = c;
                 System.out.println("Cuenta de inversion dada de alta".toUpperCase());
                 break;
             }
@@ -49,17 +51,17 @@ public class Sistema {
             case 1:
                 System.out.println("Para poder realizar su retiro ingrese el nombre del titular");
                 String nombre = t.nextLine();
-                for (int i = 0; i < cuentas.length ; i++) {
-                    if (cuentas[i] != null) {
-                        if (cuentas[i].getNombreCliente().equals(nombre) ) {
+                for (int i = 0; i < cuentaAhorro.length ; i++) {
+                    if (cuentaAhorro[i] != null) {
+                        if (cuentaAhorro[i].getNombreCliente().equals(nombre) ) {
                             System.out.println("INGRESE MONTO A RETIRAR");
                             double monto = t.nextDouble();
-                            double saldoCuenta = cuentas[i].getMonto();
+                            double saldoCuenta = cuentaAhorro[i].getMonto();
                             double saldoNuevo = saldoCuenta - monto;
                             if (saldoNuevo >= 500) {
-                                cuentas[i].setMonto(saldoNuevo);
+                                cuentaAhorro[i].setMonto(saldoNuevo);
                                 System.out.println("SE ACTUALIZÓ EL MONTO DE LA CUENTA");
-                                System.out.println("CUENTA: " + cuentas[i].getNombreCliente() +
+                                System.out.println("CUENTA: " + cuentaAhorro[i].getNombreCliente() +
                                         " MONTO VIEJO: " + saldoCuenta +
                                         " MONTO NUEVO: " + saldoNuevo);
                                 break;
@@ -81,17 +83,17 @@ public class Sistema {
             case 2:
                 System.out.println("Para poder realizar su retiro ingrese el nombre del titular");
                 String nombreCuenta = t.nextLine();
-                for (int i = 0; i < cuentas.length ; i++) {
-                    if (cuentas[i] != null) {
-                        if (cuentas[i].getNombreCliente().equals(nombreCuenta) ) {
+                for (int i = 0; i < cuentaInversion.length ; i++) {
+                    if (cuentaInversion[i] != null) {
+                        if (cuentaInversion[i].getNombreCliente().equals(nombreCuenta) ) {
                             System.out.println("INGRESE MONTO A RETIRAR");
                             double monto = t.nextDouble();
-                            double saldoCuenta = cuentas[i].getMonto();
+                            double saldoCuenta = cuentaInversion[i].getMonto();
                             double saldoNuevo = saldoCuenta - monto;
                             if (saldoNuevo >= 1000) {
-                                cuentas[i].setMonto(saldoNuevo);
+                                cuentaInversion[i].setMonto(saldoNuevo);
                                 System.out.println("SE ACTUALIZÓ EL MONTO DE LA CUENTA");
-                                System.out.println("CUENTA: " + cuentas[i].getNombreCliente() +
+                                System.out.println("CUENTA: " + cuentaInversion[i].getNombreCliente() +
                                         " MONTO VIEJO: " + saldoCuenta +
                                         " MONTO NUEVO: " + saldoNuevo);
                                 break;
@@ -123,17 +125,17 @@ public class Sistema {
             case 1:
                 System.out.println("Para poder realizar su deposito ingrese el nombre del titular");
                 String nombre=t.nextLine();
-                for (int i = 0; i < cuentas.length ; i++) {
-                    if (cuentas[i] != null) {
-                        if (cuentas[i].getNombreCliente().equals(nombre) ) {
+                for (int i = 0; i < cuentaAhorro.length ; i++) {
+                    if (cuentaAhorro[i] != null) {
+                        if (cuentaAhorro[i].getNombreCliente().equals(nombre) ) {
                             System.out.println("INGRESE MONTO A DEPOSITAR");
                             double monto = t.nextDouble();
-                            double saldoCuenta = cuentas[i].getMonto();
+                            double saldoCuenta = cuentaAhorro[i].getMonto();
                             double saldoNuevo = saldoCuenta + monto;
 
-                            cuentas[i].setMonto(saldoNuevo);
+                            cuentaAhorro[i].setMonto(saldoNuevo);
                             System.out.println("SE ACTUALIZÓ EL MONTO DE LA CUENTA");
-                            System.out.println("CUENTA: " + cuentas[i].getNombreCliente() +
+                            System.out.println("CUENTA: " + cuentaAhorro[i].getNombreCliente() +
                                     " MONTO VIEJO: " + saldoCuenta +
                                     " MONTO NUEVO: " + saldoNuevo);
                             break;
@@ -151,17 +153,17 @@ public class Sistema {
             case 2:
                 System.out.println("Para poder realizar su deposito ingrese el nombre del titular: ");
                 String nombreCuenta = t.nextLine();
-                for (int i = 0; i < cuentas.length ; i++) {
-                    if (cuentas[i] != null) {
-                        if (cuentas[i].getNombreCliente().equals(nombreCuenta) ) {
+                for (int i = 0; i < cuentaInversion.length ; i++) {
+                    if (cuentaInversion[i] != null) {
+                        if (cuentaInversion[i].getNombreCliente().equals(nombreCuenta) ) {
                             System.out.println("INGRESE MONTO A DEPOSITAR");
                             double monto = t.nextDouble();
-                            double saldoCuenta = cuentas[i].getMonto();
+                            double saldoCuenta = cuentaInversion[i].getMonto();
                             double saldoNuevo = saldoCuenta + monto;
 
-                            cuentas[i].setMonto(saldoNuevo);
+                            cuentaInversion[i].setMonto(saldoNuevo);
                             System.out.println("SE ACTUALIZÓ EL MONTO DE LA CUENTA");
-                            System.out.println("CUENTA: " + cuentas[i].getNombreCliente() +
+                            System.out.println("CUENTA: " + cuentaInversion[i].getNombreCliente() +
                                     " MONTO VIEJO: " + saldoCuenta +
                                     " MONTO NUEVO: " + saldoNuevo);
                             break;
@@ -179,15 +181,55 @@ public class Sistema {
         }
     }
 
-    private static int buscador() {
-        for (int i = 0; i < cuentas.length; i++) {
-            if (cuentas[i] != null) {
-                return i;
-            }
+    private static void buscador() {
+        System.out.println("Indique el tipo de cuenta que tiene: ");
+        System.out.println("(1) Cuenta de ahorro");
+        System.out.println("(2) Cuenta de inversion");
+        int opcion = t.nextInt();
+        t.nextLine();
+        switch (opcion){
+            case 1:
+                System.out.println("INDIQUE EL NOMBRE DEL TITULAR A BUSCAR: ");
+                String nombre = t.nextLine();
+                for (int i = 0; i < cuentaAhorro.length ; i++) {
+                    if (cuentaAhorro[i] != null) {
+                        if (cuentaAhorro[i].getNombreCliente().equals(nombre) ) {
+                            System.out.println("CUENTA: " + cuentaAhorro[i].getNombreCliente() +
+                                    " MONTO: " + cuentaAhorro[i].getMonto() +
+                                    " ");
+                            break;
+                        }
+                        else {
 
+                        }
+                    }
+                    else {
+                        System.out.println("NO SE ENCONTRÓ LA CUENTA");
+                        break;
+                    }
+                }
+                break;
+            case 2:
+                System.out.println("INDIQUE NOMBRE DE TITULAR A BUSCAR: ");
+                String nombreCuenta = t.nextLine();
+                for (int i = 0; i < cuentaInversion.length ; i++) {
+                    if (cuentaInversion[i] != null) {
+                        if (cuentaInversion[i].getNombreCliente().equals(nombreCuenta) ) {
+                            System.out.println("CUENTA: " + cuentaInversion[i].getNombreCliente() +
+                                    " MONTO: " + cuentaInversion[i].getMonto() +
+                                    " ");
+                            break;
+                        }
+                        else {
+
+                        }
+                    }
+                    else {
+                        System.out.println("NO SE ENCONTRÓ LA CUENTA");
+                        break;
+                    }
+                }
+                break;
         }
-        return 0;
     }
-
-
 }
